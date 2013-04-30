@@ -34,16 +34,12 @@ users.resors = {
 
         // Authorization
         if (!req.user.admin)
-            req.resors.allow = [ 'get' ];
+            resors.allow = [ 'get' ];
 
         // Validation or sanitation (use mongoose if you can!)
         if (resors.validation) {
-            if (!req.body.email) {
-                console.log('validation', req.body);
-                return res.status(400).json({
-                    email: 'Email is required.'
-                });
-            }
+            if (!req.body.email)
+                resors.errors.push(['email', 'Email is required.']);
         }
 
         next();
