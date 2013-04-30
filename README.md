@@ -1,4 +1,4 @@
 Resors
 =====
 
-Resources for Mongoose. Check `\example`.
+Resources for Mongoose. Check `\example\models\users.js` for most options.

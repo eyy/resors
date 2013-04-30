@@ -1,18 +1,16 @@
 {
   "name": "resors",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
   "scripts": {
     "start": "node example/app"
   },
   "dependencies": {
-    "express": "3.2.0",
-    "formage-admin": "",
-    "jade": "*",
-    "consolidate": "",
-    "dustjs-linkedin": "",
-    "dustjs-helpers": "",
     "mongoose": "",
     "xtend": ""
+  },
+  "devDependencies": {
+      "express": "3.2.0",
+      "formage-admin": "",
+      "jade": "*"
   }
 }
