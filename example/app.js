@@ -23,7 +23,7 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('magical resors'));
 app.use(express.cookieSession({cookie: { maxAge: 60 * 1000 * 20 }}));
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
