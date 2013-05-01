@@ -21,7 +21,7 @@ var users = module.exports = mongoose.model('users', schema);
  */
 users.resors = {
     allow: [ 'get', 'post', 'put', 'delete' ],
-    fields: 'email',
+    fields: 'name email',
     editable: 'email',  // TODO
     filtering: 'name',  // TODO
     sorting: 'name',    // TODO,
