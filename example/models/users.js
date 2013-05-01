@@ -21,10 +21,10 @@ var users = module.exports = mongoose.model('users', schema);
  */
 users.resors = {
     allow: [ 'get', 'post', 'put', 'delete' ],
-    select: 'email',    // TODO
+    fields: 'email',
     editable: 'email',  // TODO
     filtering: 'name',  // TODO
-    sorting: 'name',    // TODO
+    sorting: 'name',    // TODO,
     before: function(req, res, next) {
         var resors = req.resors;
 
@@ -37,7 +37,7 @@ users.resors = {
             resors.allow = [ 'get' ];
 
         // Validation or sanitation (use mongoose if you can!)
-        if (resors.validation) {
+        if (resors.method('put')) {
             if (!req.body.email)
                 resors.errors.push(['email', 'Email is required.']);
         }

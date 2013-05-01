@@ -5,11 +5,11 @@
     "start": "node example/app"
   },
   "dependencies": {
-    "mongoose": "",
     "xtend": ""
   },
   "devDependencies": {
       "express": "3.2.0",
+      "mongoose": "",
       "formage-admin": "",
       "jade": "*"
   }
