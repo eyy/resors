@@ -1,5 +1,61 @@
-Resors
-=====
-Simply write resource.
+#Resors
 
-Resources for Mongoose. Check `\example\models\users.js` for most options.
+> Simply write resource.
+
+Introduction
+---
+
+Do you want to REST your way to your mongoose models?
+Well, **Resors** do exactly that right out of the box.
+
+Synopsis
+---
+
+**Resors** operates ontop of Express so you need to create your express app first.
+
+```js
+var express = require('express'),
+    app = express();
+    
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router)
+    
+http.createServer(app).listen(8080, function(){
+  console.log('Server listening on port 8080' );
+});
+```
+
+Install Mongoose and write your models as you are usually do.
+```js
+var mongoose = require('mongoose');
+
+var schema = new mongoose.Schema({
+  name: String,
+  email: { type: String, required: true }
+})
+
+var users = mongoose.model('users', schema);
+```
+
+Now add **Resors**.
+
+```js
+var Resors = require('resors');
+
+app.use('/api', Resors.middleware());
+```
+
+And that's it! your REST server is on `http://localhost:8080/api` see the list of resources.
+
+**Resors** only allow GET http method out of the box, 
+if you want to enable other methods just add to the model:
+```js
+users.resors = {
+  allow = [ 'get', 'post', 'put', 'delete' ];
+}
+```
+
+Now you have a full CRUD application with REST :)
+
+Check out `\example\` for more.
