@@ -23,8 +23,8 @@ users.resors = {
     allow: [ 'get', 'post', 'put', 'delete' ],
     fields: ['name', 'email'],
     editable: 'email',  // TODO
-    filtering: [ 'name', 'name.full' ],  // TODO
-    sorting: 'name',    // TODO,
+    filtering: [ 'name', 'name.full' ],
+    sorting: 'name',
     before: function(req, res, next) {
         var resors = req.resors;
 

@@ -1,7 +1,7 @@
 var Resors = require('../../');
 
 var hi = module.exports = new Resors('hi', {
-        allow: [ 'post' ]
+        allow: [ 'post', 'get' ]
     }
 );
 

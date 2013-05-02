@@ -22,7 +22,7 @@ app.use(express.methodOverride());
 app.use(app.router)
     
 http.createServer(app).listen(80, function(){
-  console.log('Server listening on port 80' );
+    console.log('Server listening on port 80' );
 });
 ```
 
@@ -35,7 +35,7 @@ var schema = new mongoose.Schema({
     email: { type: String, required: true }
 })
 
-var users = mongoose.model('users', schema);
+var model = mongoose.model('users', schema);
 ```
 
 Now add **Resors**.
@@ -51,10 +51,11 @@ And that's it! your REST server is on `http://localhost/api` see the list of res
 **Resors** only allow GET http method out of the box, 
 if you want to enable other methods just add to the model:
 ```js
-users.resors = {
+model.resors = {
   allow = [ 'get', 'post', 'put', 'delete' ];
 }
 ```
+If you don't want the model having **Resors**, set `model.resors = false`.
 
 Now you have a full CRUD application with REST :)
 
