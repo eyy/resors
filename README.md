@@ -60,3 +60,9 @@ If you don't want the model having **Resors**, set `model.resors = false`.
 Now you have a full CRUD application with REST :)
 
 Check out `\example\` for more.
+
+Sponsors
+---
+<a id="stormlogo" href="http://www.jetbrains.com/webstorm/" alt="Smart IDE for web development with HTML Editor, CSS &amp; JavaScript support" title="Smart IDE for web development with HTML Editor, CSS &amp; JavaScript support">
+  ![](http://i.imgur.com/ynQ6c.png)
+</a>
