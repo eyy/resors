@@ -21,20 +21,20 @@ var users = module.exports = mongoose.model('users', schema);
  */
 users.resors = {
     allow: [ 'get', 'post', 'put', 'delete' ],
-    fields: 'name email',
+    fields: ['name', 'email'],
     editable: 'email',  // TODO
-    filtering: 'name',  // TODO
+    filtering: [ 'name', 'name.full' ],  // TODO
     sorting: 'name',    // TODO,
     before: function(req, res, next) {
         var resors = req.resors;
 
         // Authentication
-        if (!req.user)
-            return res.redirect('/login');
-
-        // Authorization
         if (!req.user.admin)
-            resors.allow = [ 'get' ];
+            res.authenticated = false;
+
+        // Authentication 2
+        //if (!req.user.admin)
+        //    resors.allow = [ 'get' ];
 
         // Validation or sanitation (use mongoose if you can!)
         if (resors.method('put')) {
