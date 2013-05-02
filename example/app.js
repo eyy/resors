@@ -44,7 +44,7 @@ mongoose.connect(app.get('mongo'));
 app.use('/api', Resors.middleware());
 
 // with resource list
-//app.use('/api', Resors.middleware(require('./resources')));
+//app.use('/api', Resors.middleware(require('./')));
 
 app.get('/', function(req, res) {
     res.redirect('/api');

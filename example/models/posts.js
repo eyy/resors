@@ -9,13 +9,13 @@ var schema = new mongoose.Schema({
 schema.methods.toString = function(){
     return this.title;
 };
-var posts = module.exports = mongoose.model('posts', schema);
+var model = module.exports = mongoose.model('posts', schema);
 
 
 /*
     Resors
  */
-posts.resors = {
+model.resors = {
     query: function(req, res, next) {
         res.query = res.query.populate('user');
         next();

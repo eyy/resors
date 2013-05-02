@@ -9,8 +9,8 @@ var schema = new mongoose.Schema({
 schema.methods.toString = function(){
     return this.title;
 };
-var filtering = module.exports = mongoose.model('filtering', schema);
+var model = module.exports = mongoose.model('filtering', schema);
 
-filtering.resors = {
+model.resors = {
     allow: [ 'get', 'post', 'put', 'delete' ]
 };

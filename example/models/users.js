@@ -13,13 +13,13 @@ schema.statics.checkName = function(value, cb){
         cb(err, count === 0)
     })
 };
-var users = module.exports = mongoose.model('users', schema);
+var models = module.exports = mongoose.model('users', schema);
 
 
 /*
     Resors
  */
-users.resors = {
+models.resors = {
     allow: [ 'get', 'post', 'put', 'delete' ],
     fields: ['name', 'email'],
     editable: 'email',  // TODO
