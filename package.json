@@ -1,33 +1,33 @@
 {
-  "name": "resors",
-  "description": "REST your resources with resors",
-  "version": "0.0.5",
-  "author": {
-    "name": "Etai Peretz",
-    "email": "etai@empeeric.com"
-  },
-  "contributors": [
-      {
-          "name": "Alon Valadji",
-          "email": "alon@ronin.co.il",
-          "url": "http://www.ronin.co.il/"
-      }
-  ],
-  "scripts": {
-    "start": "node example/app"
-  },
-  "dependencies": {
-    "xtend": ""
-  },
-  "devDependencies": {
-      "express": "3.2.0",
-      "mongoose": "",
-      "formage-admin": "",
-      "jade": "*"
-  },
-  "main": "index.js",
+    "name": "resors",
+    "description": "REST your resources with resors",
+    "version": "0.0.5",
+    "author": {
+        "name": "Etai Peretz",
+        "email": "etai@empeeric.com"
+    },
+    "contributors": [
+        {
+            "name": "Alon Valadji",
+            "email": "alon@ronin.co.il",
+            "url": "http://www.ronin.co.il/"
+        }
+    ],
+    "scripts": {
+        "start": "node example/app"
+    },
+    "dependencies": {
+        "xtend": ""
+    },
+    "devDependencies": {
+        "express": "3.x.x",
+        "mongoose": "",
+        "formage-admin": "",
+        "jade": ""
+    },
+    "main": "index.js",
     "repository": {
-    "type": "git",
-    "url": "https://github.com/etaypere/resors.git"
-  }
+        "type": "git",
+        "url": "https://github.com/etaypere/resors.git"
+    }
 }
