@@ -21,8 +21,8 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router)
     
-http.createServer(app).listen(8080, function(){
-  console.log('Server listening on port 8080' );
+http.createServer(app).listen(80, function(){
+  console.log('Server listening on port 80' );
 });
 ```
 
@@ -31,8 +31,8 @@ Install Mongoose and write your models as you are usually do.
 var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-  name: String,
-  email: { type: String, required: true }
+    name: String,
+    email: { type: String, required: true }
 })
 
 var users = mongoose.model('users', schema);
@@ -46,7 +46,7 @@ var Resors = require('resors');
 app.use('/api', Resors.middleware());
 ```
 
-And that's it! your REST server is on `http://localhost:8080/api` see the list of resources.
+And that's it! your REST server is on `http://localhost/api` see the list of resources.
 
 **Resors** only allow GET http method out of the box, 
 if you want to enable other methods just add to the model:

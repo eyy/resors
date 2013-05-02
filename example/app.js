@@ -3,7 +3,7 @@ var express = require('express'),
     path = require('path'),
     models = require('./models'),
     mongoose = require('mongoose'),
-    resors = require('../');
+    Resors = require('../');
 
 var app = express();
 
@@ -41,10 +41,10 @@ mongoose.connect(app.get('mongo'));
 // resors middleware
 // you can pass resources list ( see 'examples/index.js' )
 // if is omitted, resors will look in mongoose models
-app.use('/api', resors.middleware());
+app.use('/api', Resors.middleware());
 
 // with resource list
-//app.use('/api', resors.middleware(require('./')));
+//app.use('/api', Resors.middleware(require('./resources')));
 
 app.get('/', function(req, res) {
     res.redirect('/api');
