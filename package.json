@@ -23,7 +23,8 @@
         "express": "3.x.x",
         "mongoose": "",
         "formage-admin": "",
-        "jade": ""
+        "jade": "",
+        "nodeunit": ""
     },
     "main": "index.js",
     "repository": {
