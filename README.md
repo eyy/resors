@@ -61,6 +61,41 @@ Now you have a full CRUD application with REST :)
 
 Check out `\example\` for more.
 
+Resors middlewares partly-explained
+---------------------------
+
+**Resors** is built on top of express.js, using connect middleware mechanism to function.
+Each request follows a series of middlewares, as follows:
+
+```
+/*
+init          X
+
+before        usage: authentication, validation
+              vars: req.resors, req.authenticated
+
+error check   X
+
+route         (index, show, create, update, delete)
+
+query         (runs only for `index` and `show`)
+              usage: populate, authorization
+              vars: res.query
+
+exec          (executes res.query, doesn't runs for `create`)
+
+after         usage: post-production
+              vars: res.err, res.result
+
+finish        (send res.err or err.result)
+*/
+```
+
+Each middleware receives `req`, `res`, and `next` as params, and `this` is set to the `Resors` instance.
+Therefore, `next()` will move to the next middleware, `this.finish(req, res)` will jump to the movie end,
+and `res.json(false)` will, e.g., return a negative response.
+
+
 Sponsors
 ---
 <a id="stormlogo" href="http://www.jetbrains.com/webstorm/" alt="Smart IDE for web development with HTML Editor, CSS &amp; JavaScript support" title="Smart IDE for web development with HTML Editor, CSS &amp; JavaScript support">
