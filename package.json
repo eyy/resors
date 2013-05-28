@@ -1,7 +1,7 @@
 {
     "name": "resors",
     "description": "Simply write resources (for express and mongoose)",
-    "version": "0.0.9",
+    "version": "0.1.0",
     "author": {
         "name": "Etay Peretz",
         "email": "etai@empeeric.com"
