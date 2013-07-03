@@ -1,5 +1,3 @@
-var testCase = require('nodeunit').testCase;
-
 var mongoose = require('mongoose'),
     express = require('express'),
     Resors = require('../'),
@@ -7,23 +5,14 @@ var mongoose = require('mongoose'),
 
 // mongoose
 mongoose.connect('mongodb://localhost/resors-test');
-var users = mongoose.model('users', {
+var User = mongoose.model('users', {
     name: { type: String, required: true },
     email: String
 });
-users.create({ name: 'Paul' });
 
-// tests
-module.exports = testCase({
-    "0": function (test) {
-        test.ok(true);
-        test.done();
-    },
-
-    "simple mongoose model": function(test) {
-        var app = express();
-        var r = new MongooseResors(users, users.resors);
-        r.routes(app);
-        test.done();
-    }
-});
+// test
+var app = express();
+var r = new MongooseResors(User, User.resors);
+r.routes(app);
+console.log(r instanceof MongooseResors);
+console.log(r instanceof Resors);
