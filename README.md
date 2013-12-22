@@ -2,6 +2,8 @@
 
 > Simply write resource.
 
+![Resors](https://raw.github.com/eyy/resors/master/resors.png)
+
 **Resors** writes REST resources for your [mongoose](http://mongoosejs.com/) models. It can be a one-liner, but there are planty of options you can set, and methods you can override, so you get exactly the resources you need.
 
 ### Quick Example
