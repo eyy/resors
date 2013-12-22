@@ -1,34 +1,34 @@
 {
-    "name": "resors",
-    "description": "Simply write resources (for express and mongoose)",
-    "version": "0.1.3",
-    "author": {
-        "name": "Etay Peretz",
-        "email": "etai@empeeric.com"
-    },
-    "contributors": [
-        {
-            "name": "Alon Valadji",
-            "email": "alon@ronin.co.il",
-            "url": "http://www.ronin.co.il"
-        }
-    ],
-    "scripts": {
-        "start": "node example/app"
-    },
-    "dependencies": {
-        "xtend": ""
-    },
-    "devDependencies": {
-        "express": "3.x.x",
-        "mongoose": "",
-        "formage-admin": "",
-        "jade": "",
-        "nodeunit": ""
-    },
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/eyy/resors.git"
+  "name": "resors",
+  "description": "Simply write resources (for express and mongoose)",
+  "version": "0.2.0",
+  "author": {
+    "name": "Etay Peretz",
+    "email": "etai@empeeric.com"
+  },
+  "contributors": [
+    {
+      "name": "Alon Valadji",
+      "email": "alon@ronin.co.il",
+      "url": "http://www.ronin.co.il"
     }
+  ],
+  "scripts": {
+    "start": "node example/app"
+  },
+  "dependencies": {
+    "xtend": ""
+  },
+  "devDependencies": {
+    "express": "3.x.x",
+    "mongoose": "",
+    "formage-admin": "",
+    "jade": "",
+    "nodeunit": ""
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eyy/resors.git"
+  }
 }
