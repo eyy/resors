@@ -2,10 +2,10 @@
 
 > Simply write resource.
 
-**Resors** writes REST resources for your mongoose models. It can be a one-liner, but there are planty of options you can set, and methods you can override, so you get exactly the resources you need.
+**Resors** writes REST resources for your [mongoose](http://mongoosejs.com/) models. It can be a one-liner, but there are planty of options you can set, and methods you can override, so you get exactly the resources you need.
 
 ### Quick Example
-You would need an express server, and some mongoose models.
+You would need an [express](http://expressjs.com/) server, and some mongoose models.
 ```js
 // express
 var app = require('express')();
@@ -22,7 +22,6 @@ app.use('/api', require('resors').middleware());
 // run run run
 require('http').createServer(app).listen(80);
 ```
-
 That's it! On `http://localhost/api` you'd find a list of resources,
 and in `http://localhost/api/users` your `users` resource.
 
@@ -75,7 +74,7 @@ models.resors = {
 
 ### Override
 Inernally, **Resors** creates a `MongooseResors` instance for each, well, mongoose resource.
-If you would like to override some function, you can do this:
+If you would like to override one of its methods, you can do something like this:
 ```js
 var r = model.resors = new MongooseResors(model, {
     // options, same as above
