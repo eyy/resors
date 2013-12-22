@@ -2,7 +2,7 @@
 
 > Simply write resource.
 
-![Resors](https://raw.github.com/eyy/resors/master/resors.png)
+<img src="https://raw.github.com/eyy/resors/master/resors.png" />
 
 **Resors** writes REST resources for your [mongoose](http://mongoosejs.com/) models. It can be a one-liner, but there are planty of options you can set, and methods you can override, so you get exactly the resources you need.
 
@@ -74,8 +74,8 @@ models.resors = {
 };
 ```
 
-### Override
-Inernally, **Resors** creates a `MongooseResors` instance for each, well, mongoose resource.
+### Overriding
+Internally, **Resors** creates a `MongooseResors` instance for each (hmm) mongoose resource.
 If you would like to override one of its methods, you can do something like this:
 ```js
 var r = model.resors = new MongooseResors(model, {
@@ -89,7 +89,7 @@ r.create = function(req, res, next) {
 ```
 
 ### How does it works?
-**Resors** is built on top of express.js, using connect middleware mechanism to function.
+**Resors** is built on top of express, using connect middleware mechanism to function.
 Each request falls through the following series of middlewares:
 ```
 init          ...
