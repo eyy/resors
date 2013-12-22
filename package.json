@@ -1,7 +1,7 @@
 {
     "name": "resors",
     "description": "Simply write resources (for express and mongoose)",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "author": {
         "name": "Etay Peretz",
         "email": "etai@empeeric.com"
@@ -29,6 +29,6 @@
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/etaypere/resors.git"
+        "url": "https://github.com/eyy/resors.git"
     }
 }
