@@ -120,7 +120,7 @@ Therefore, `next()` will move to the next middleware, `this.finish(req, res)` wi
 and `res.json(false)` will, e.g., return a negative response.
 
 
-Sponsors
+Thanks
 ---
 <a id="stormlogo" href="http://www.jetbrains.com/webstorm/" alt="Smart IDE for web development with HTML Editor, CSS &amp; JavaScript support" title="Smart IDE for web development with HTML Editor, CSS &amp; JavaScript support">
   ![](http://i.imgur.com/ynQ6c.png)
