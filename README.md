@@ -2,97 +2,120 @@
 
 > Simply write resource.
 
-Introduction
----
+**Resors** writes REST resources for your mongoose models. It can be a one-liner, but there are planty of options you can set, and methods you can override, so you get exactly the resources you need.
 
-Do you want to REST your way to your mongoose models?
-Well, **Resors** do exactly that right out of the box.
-
-Synopsis
----
-
-**Resors** operates ontop of Express so you need to create your express app first.
-
+### Quick Example
+You would need an express server, and some mongoose models.
 ```js
-var express = require('express'),
-    app = express();
-    
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router)
-    
-http.createServer(app).listen(80, function(){
-    console.log('Server listening on port 80' );
-});
-```
+// express
+var app = require('express')();
 
-Install Mongoose and write your models as you are usually do.
-```js
-var mongoose = require('mongoose');
-
-var schema = new mongoose.Schema({
+// mongoose
+var model = require('mongoose').model('users', {
     name: String,
     email: { type: String, required: true }
-})
+});
 
-var model = mongoose.model('users', schema);
+// resors!
+app.use('/api', require('resors').middleware());
+
+// run run run
+require('http').createServer(app).listen(80);
 ```
 
-Now add **Resors**.
+That's it! On `http://localhost/api` you'd find a list of resources,
+and in `http://localhost/api/users` your `users` resource.
 
+### Options
+By default, **Resors** only allow GET http method, but enabling other methods is easy, by adding an options object to the model. If you don't want the model having a **Resors**, set `model.resors = false`.
 ```js
-var Resors = require('resors');
+models.resors = {
+    allow: [ 'get', 'post', 'put', 'delete' ], // default: ['get']
+    fields: ['name', 'email'],
+    filtering: [ 'name', 'name.full' ],
+    sorting: 'name',
+    
+    // run this before each request
+    before: function(req, res, next) {
+        var resors = req.resors;
 
-app.use('/api', Resors.middleware());
+        // authentication
+        if (!req.user.admin)
+            res.authenticated = false;
+
+        // validation or sanitation (use mongoose if you can!)
+        if (resors.method('put')) {
+            if (!req.body.email)
+                resors.errors.push(['email', 'Email is required.']);
+        }
+
+        next();
+    },
+    
+    // Play with mongoose query on GET requests
+    query: function(req, res, next) {
+        var q = res.query;
+
+        // authorization
+        if (req.user && !req.user.admin) {
+            q = q.where('name', req.user.name);
+        }
+
+        res.query = q;
+        next();
+    },
+    
+    // runs after every request
+    after: function(req, res, next) {
+        console.log('after', res.result);
+        next();
+    }
+};
 ```
 
-And that's it! your REST server is on `http://localhost/api` see the list of resources.
-
-**Resors** only allow GET http method out of the box, 
-if you want to enable other methods just add to the model:
+### Override
+Inernally, **Resors** creates a `MongooseResors` instance for each, well, mongoose resource.
+If you would like to override some function, you can do this:
 ```js
-model.resors = {
-  allow = [ 'get', 'post', 'put', 'delete' ];
-}
+var r = model.resors = new MongooseResors(model, {
+    // options, same as above
+});
+
+r.create = function(req, res, next) {
+    req.body.cool_field = 'hi there';
+    MongooseResors.fn.create(req, res, next);
+};
 ```
-If you don't want the model having **Resors**, set `model.resors = false`.
 
-Now you have a full CRUD application with REST :)
-
-Check out `\example\` for more.
-
-Resors middlewares partly-explained
----------------------------
-
+### How does it works?
 **Resors** is built on top of express.js, using connect middleware mechanism to function.
-Each request follows a series of middlewares, as follows:
-
+Each request falls through the following series of middlewares:
 ```
-/*
-init          X
+init          ...
 
-before        usage: authentication, validation
+before        can be set via options
+              usage: authentication, validation
               vars: req.resors, req.authenticated
 
-error check   X
+error check   ...
 
 route         (index, show, create, update, delete)
 
-query         (runs only for `index` and `show`)
+query         can be set via options
+              (runs only for `index` and `show`)
               usage: populate, authorization
               vars: res.query
 
 exec          (executes res.query, doesn't runs for `create`)
 
-after         usage: post-production
+after         can be set via options
+              usage: post-production
               vars: res.err, res.result
 
 finish        (send res.err or err.result)
-*/
 ```
-
 Each middleware receives `req`, `res`, and `next` as params, and `this` is set to the `Resors` instance.
-Therefore, `next()` will move to the next middleware, `this.finish(req, res)` will jump to the movie end,
+Therefore, `next()` will move to the next middleware, `this.finish(req, res)` will jump to the end,
 and `res.json(false)` will, e.g., return a negative response.
 
 
